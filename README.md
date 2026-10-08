@@ -78,7 +78,7 @@ Call `requestPhoneNumber()` from a user gesture (button press). Normalize the re
 | --- | --- | --- |
 | `requestPhoneNumber()` | `Promise<string \| null>` | Android sheet. Concurrent JS callers share one chooser. Cancel, error, iOS, and missing Play services resolve `null`. |
 | `isPhoneNumberHintAvailable()` | `Promise<boolean>` | `true` only on Android when Play services are present. |
-| `phoneNumberInputProps` | `TextInput` props | `autoComplete`, `textContentType`, `keyboardType`, `importantForAutofill`. On iOS, `keyboardType` is `numbers-and-punctuation` so the keyboard can show a tappable phone suggestion when that number is on the Me contact. iOS does not open a chooser sheet. Android stays on `phone-pad`. |
+| `phoneNumberInputProps` | `TextInput` props | `autoComplete`, `textContentType`, `keyboardType`, `importantForAutofill`. On iOS, `keyboardType` is `number-pad` (a 0–9 keypad, not the letter keyboard). iOS does not open a chooser sheet. Android stays on `phone-pad`. |
 
 This package never sends OTPs, authenticates, persists, or logs numbers.
 

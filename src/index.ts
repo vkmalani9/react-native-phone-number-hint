@@ -11,7 +11,7 @@ export const phoneNumberInputProps: Pick<
 > = {
   autoComplete: 'tel',
   textContentType: 'telephoneNumber',
-  keyboardType: Platform.OS === 'ios' ? 'numbers-and-punctuation' : 'phone-pad',
+  keyboardType: Platform.OS === 'ios' ? 'number-pad' : 'phone-pad',
   importantForAutofill: 'yes',
 };
 
