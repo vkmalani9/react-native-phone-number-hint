@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.1.3
+
 - Use the iOS name-and-phone keypad for international phone entry.
 - Clarify that availability only checks for an active Android Activity and Google Play services.
 
