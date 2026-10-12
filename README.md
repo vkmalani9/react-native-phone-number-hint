@@ -77,8 +77,8 @@ Call `requestPhoneNumber()` from a user gesture (button press). Normalize the re
 | Export | Returns | Notes |
 | --- | --- | --- |
 | `requestPhoneNumber()` | `Promise<string \| null>` | Android sheet. Concurrent JS callers share one chooser. Cancel, error, iOS, and missing Play services resolve `null`. |
-| `isPhoneNumberHintAvailable()` | `Promise<boolean>` | `true` only on Android when Play services are present. |
-| `phoneNumberInputProps` | `TextInput` props | `autoComplete`, `textContentType`, `keyboardType`, `importantForAutofill`. On iOS, `keyboardType` is `number-pad` (a 0–9 keypad, not the letter keyboard). iOS does not open a chooser sheet. Android stays on `phone-pad`. |
+| `isPhoneNumberHintAvailable()` | `Promise<boolean>` | `true` on Android when an Activity is active and Play services are available. This does not guarantee a number can be selected; the request can still return `null`. |
+| `phoneNumberInputProps` | `TextInput` props | `autoComplete`, `textContentType`, `keyboardType`, `importantForAutofill`. Uses iOS `name-phone-pad` (for name/phone entry) and Android `phone-pad`. iOS does not open a chooser sheet. |
 
 This package never sends OTPs, authenticates, persists, or logs numbers.
 

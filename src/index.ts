@@ -11,11 +11,11 @@ export const phoneNumberInputProps: Pick<
 > = {
   autoComplete: 'tel',
   textContentType: 'telephoneNumber',
-  keyboardType: Platform.OS === 'ios' ? 'number-pad' : 'phone-pad',
+  keyboardType: Platform.OS === 'ios' ? 'name-phone-pad' : 'phone-pad',
   importantForAutofill: 'yes',
 };
 
-/** True only on Android when Google Play services can show the Phone Number Hint sheet. */
+/** True on Android when an Activity is active and Google Play services are available. */
 export async function isPhoneNumberHintAvailable(): Promise<boolean> {
   if (Platform.OS !== 'android') return false;
   const native = NativePhoneNumberHint;
