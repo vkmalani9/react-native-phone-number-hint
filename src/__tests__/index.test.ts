@@ -45,6 +45,29 @@ it('does not invoke an Android chooser on iOS', async () => {
   expect(native.requestPhoneNumber).not.toHaveBeenCalled();
 });
 
+it('uses the iOS name-and-phone keypad for international number entry', () => {
+  const getPropsForPlatform = (os: 'ios' | 'android') => {
+    jest.resetModules();
+    jest.doMock('react-native', () => ({
+      Platform: { OS: os },
+    }));
+    const props =
+      jest.requireActual<typeof import('../index')>(
+        '../index'
+      ).phoneNumberInputProps;
+    jest.dontMock('react-native');
+    jest.resetModules();
+    return props;
+  };
+
+  const iosProps = getPropsForPlatform('ios');
+  const androidProps = getPropsForPlatform('android');
+  expect(iosProps.keyboardType).toBe('name-phone-pad');
+  expect(iosProps.autoComplete).toBe('tel');
+  expect(iosProps.textContentType).toBe('telephoneNumber');
+  expect(androidProps.keyboardType).toBe('phone-pad');
+});
+
 it('reports availability on Android and not on iOS', async () => {
   native.isAvailable.mockResolvedValue(true);
   expect(await isPhoneNumberHintAvailable()).toBe(true);
